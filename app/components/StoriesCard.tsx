@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { formatDate } from '@/lib/utils';
+import { formatDate, cn } from '@/lib/utils';
 import { Author, Stories } from '@/sanity/types';
 
 
@@ -38,14 +38,14 @@ const StoriesCard = ({ post }: { post: StoriesTypeCard }) => {
             <Link href={`/user/${author?._id}`}>
               <p className="text-16-medium line-clamp-1">{author?.name}</p>
             </Link>
-            <Link href={`/startup/${_id}`}>
+            <Link href={`/stories/${_id}`}>
               <h3 className="text-26-semibold line-clamp-1">{title}</h3>
             </Link>
           </div>
           <Link href={`/user/${author?._id}`}>
             <Image
-              src={author?.image!}
-              alt={author?.name!}
+              src={author?.image || '/default-avatar.png'} 
+              alt={author?.name || 'Author'}  
               width={48}
               height={48}
               className="rounded-full"
@@ -53,10 +53,16 @@ const StoriesCard = ({ post }: { post: StoriesTypeCard }) => {
           </Link>
         </div>
   
-        <Link href={`/startup/${_id}`}>
+        <Link href={`/stories/${_id}`}>
           <p className="startup-card_desc">{description}</p>
   
-          <img src={image} alt="placeholder" className="startup-card_img" />
+          <Image
+    src={image || ''}
+    alt="placeholder"
+    width={400} // Set the desired width
+    height={250} // Set the desired height
+    className="startup-card_img"
+  />
         </Link>
   
         <div className="flex-between gap-3 mt-5">

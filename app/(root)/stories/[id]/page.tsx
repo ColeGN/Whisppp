@@ -1,8 +1,7 @@
 import React from 'react'
 import { Suspense } from 'react';
-import { auth } from "@/auth";
 import { client } from "@/sanity/lib/client";
-import { AUTHOR_BY_ID_QUERY, STORIES_BY_ID_QUERY } from "@/sanity/lib/queries";
+import { PLAYLIST_BY_SLUG_QUERY, STORIES_BY_ID_QUERY } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import markdownit from "markdown-it";
@@ -10,6 +9,8 @@ import { formatDate } from '@/lib/utils';
 import Link from 'next/link';
 import View from '@/app/components/View';
 import { Skeleton } from '@/components/ui/skeleton';
+import StoriesCard, { StoriesTypeCard } from '@/app/components/StoriesCard';
+
 
 const md = markdownit();
 
@@ -18,7 +19,13 @@ export const experimental_ppr = true
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
     const id = (await params).id;
 
-    const post = await client.fetch(STORIES_BY_ID_QUERY ,{id});
+    const [post , {select : editorPosts} ] = await Promise.all([
+      client.fetch(STORIES_BY_ID_QUERY ,{id}),
+      client.fetch(PLAYLIST_BY_SLUG_QUERY, {slug: 'editor-picks-new'})
+    ])
+    // const post = await client.fetch(STORIES_BY_ID_QUERY ,{id});
+
+    // const {select: editorPosts} = await client.fetch(PLAYLIST_BY_SLUG_QUERY , {slug: 'editor-picks-new'})
 
     if (!post) {
         return notFound();
@@ -35,11 +42,13 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
       </section>
 
       <section className="section_container">
-        <img
-          src={post.image}
-          alt="thumbnail"
-          className="w-full h-auto rounded-xl"
-        />
+      <Image
+    src={post.image}
+    alt="thumbnail"
+    width={800} // Set the desired width
+    height={600} // Set the desired height
+    className="w-full h-auto rounded-xl"
+  />
 
         <div className="space-y-5 mt-10 max-w-4xl mx-auto">
           <div className="flex-between gap-5">
@@ -78,6 +87,18 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
         </div>
 
         <hr className='divider'/>
+
+        {editorPosts?.length > 0 && (
+          <div className="max-w-4xl mx-auto">
+            <p className="text-30-semibold">Editor Picks</p>
+
+            <ul className="mt-7 card_grid-sm">
+              {editorPosts.map((post: StoriesTypeCard, i: number) => (
+                <StoriesCard key={i} post={post} />
+              ))}
+            </ul>
+          </div>
+        )}
 
         <Suspense fallback={<Skeleton className="view_skeleton" />}>
           <View id={id} />

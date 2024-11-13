@@ -18,7 +18,7 @@ const StoriesForm = () => {
   const { toast } = useToast();
   const router = useRouter();
 
-  const handleFormSubmit = async (prevState: any, formData: FormData) => {
+  const handleFormSubmit = async (prevState: { error: string; status: string }, formData: FormData) => {
     try {
       const formValues = {
         title: formData.get("title") as string,
@@ -35,7 +35,7 @@ const StoriesForm = () => {
       if (result.status == "SUCCESS") {
         toast({
           title: "Success",
-          description: "Your startup pitch has been created successfully",
+          description: "Your story pitch has been created successfully",
         });
 
         router.push(`/stories/${result._id}`);
@@ -70,7 +70,7 @@ const StoriesForm = () => {
       };
     }
   };
-
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [state, formAction, isPending] = useActionState(handleFormSubmit, {
     error: "",
     status: "INITIAL",
