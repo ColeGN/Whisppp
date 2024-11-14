@@ -37,7 +37,7 @@ export default function CategoryNewsPage() {
         }
         const data = await response.json()
         setArticles(data.results)
-      } catch (err) {
+      } catch (error) {
         setError('Failed to load news. Please try again later.')
       } finally {
         setIsLoading(false)

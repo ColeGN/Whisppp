@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import UserStories from "@/app/components/UserStories";
 import { Suspense } from "react";
-import { StartupCardSkeleton } from "@/app/components/StoriesCard";
+import { StoriesCardSkeleton } from "@/app/components/StoriesCard";
 
 export const experimental_ppr = true;
 
@@ -45,7 +45,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
             {session?.id === id ? "Your" : "All"} Stories
           </p>
           <ul className="card_grid-sm">
-            <Suspense fallback={<StartupCardSkeleton />}>
+            <Suspense fallback={<StoriesCardSkeleton />}>
               <UserStories id={id} />
             </Suspense>
           </ul>

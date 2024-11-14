@@ -1,28 +1,45 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, useAnimation, useInView } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { MessageSquare, Feather, Globe } from 'lucide-react'
 import Image from 'next/image'
 
-export default function Component() {
+// Custom hook for window size
+const useWindowSize = () => {
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 })
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight })
+    }
+
+    handleResize() // Set initial size
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  return windowSize
+}
+
+export default function AboutPage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const cardRef = useRef(null)
   const isInView = useInView(cardRef, { once: true })
   const mainControls = useAnimation()
+  const { width: windowWidth, height: windowHeight } = useWindowSize()
+
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    setMousePosition({ x: e.clientX, y: e.clientY })
+  }, [])
 
   useEffect(() => {
-    const mouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
-
-    window.addEventListener('mousemove', mouseMove)
-
+    window.addEventListener('mousemove', handleMouseMove)
     return () => {
-      window.removeEventListener('mousemove', mouseMove)
+      window.removeEventListener('mousemove', handleMouseMove)
     }
-  }, [])
+  }, [handleMouseMove])
 
   useEffect(() => {
     if (isInView) {
@@ -42,10 +59,10 @@ export default function Component() {
           <motion.div
             key={i}
             className="absolute h-1 w-1 bg-blue-200 rounded-full"
-            initial={{ x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight }}
+            initial={{ x: Math.random() * windowWidth, y: Math.random() * windowHeight }}
             animate={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
+              x: Math.random() * windowWidth,
+              y: Math.random() * windowHeight,
               transition: { duration: 10, repeat: Infinity, repeatType: 'reverse' },
             }}
           />
