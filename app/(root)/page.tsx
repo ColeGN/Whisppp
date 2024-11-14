@@ -23,12 +23,12 @@ export default async function Home({
     <>
     <section className="pink_container">
       <h1 className="heading "> 
-        Pitch Your Story <br />
-        Connect with entrepreneurs
+      At Whispp, you have the freedom  to  express yourself <br/> —no  filters, no limits. 
+
+
       </h1>
 
-      <p className="sub-heading !max-w-3xl"> Submit Ideas , Vote on Pitches, and Get Notices in Virtual 
-        Competitions 
+      <p className="sub-heading !max-w-3xl"> Express your creativity freely and engage with others!
       </p>
       <SearchForm query={query}/>
     </section>

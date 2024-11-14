@@ -87,7 +87,7 @@ const StoriesForm = () => {
           name="title"
           className="startup-form_input"
           required
-          placeholder="Startup Title"
+          placeholder="Stories Title"
         />
 
         {errors.title && <p className="startup-form_error">{errors.title}</p>}
@@ -102,7 +102,7 @@ const StoriesForm = () => {
           name="description"
           className="startup-form_textarea"
           required
-          placeholder="Startup Description"
+          placeholder="Stories Description"
         />
 
         {errors.description && (
@@ -119,7 +119,7 @@ const StoriesForm = () => {
           name="category"
           className="startup-form_input"
           required
-          placeholder="Startup Category (Tech, Health, Education...)"
+          placeholder="Stories Category (Tech, Health, Education...)"
         />
 
         {errors.category && (
@@ -136,7 +136,7 @@ const StoriesForm = () => {
           name="link"
           className="startup-form_input"
           required
-          placeholder="Startup Image URL"
+          placeholder="Stories Image URL"
         />
 
         {errors.link && <p className="startup-form_error">{errors.link}</p>}
@@ -156,7 +156,7 @@ const StoriesForm = () => {
           style={{ borderRadius: 20, overflow: "hidden" }}
           textareaProps={{
             placeholder:
-              "Briefly describe your idea and what problem it solves",
+              "Share your journey and the challenges you overcame.",
           }}
           previewOptions={{
             disallowedElements: ["style"],
