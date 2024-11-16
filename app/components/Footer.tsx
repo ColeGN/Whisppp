@@ -10,9 +10,9 @@ import { useToast } from "@/hooks/use-toast"
 
 
 const socialIcons = [
-  { Icon: Github, href: 'https://github.com/yourusername', label: 'GitHub' },
+  { Icon: Github, href: 'https://github.com/ColeGN', label: 'GitHub' },
   { Icon: Twitter, href: 'https://twitter.com/yourusername', label: 'Twitter' },
-  { Icon: Linkedin, href: 'https://linkedin.com/in/yourusername', label: 'LinkedIn' },
+  { Icon: Linkedin, href: 'https://www.linkedin.com/in/gantogtokh-nyamrentsen-1a52ba2b9/', label: 'LinkedIn' },
 ]
 
 export default function Footer() {
@@ -23,7 +23,6 @@ export default function Footer() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you would typically send the feedback to your server
     console.log('Submitted feedback:', { email, feedback })
     toast({
       title: "Feedback Received!",

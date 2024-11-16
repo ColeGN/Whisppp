@@ -4,6 +4,7 @@ import StoriesCard from "../components/StoriesCard";
 import { StoriesTypeCard } from "../components/StoriesCard";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { auth } from "@/auth";
+
 export default async function Home({
   searchParams,
 }: {

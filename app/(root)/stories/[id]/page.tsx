@@ -14,7 +14,7 @@ import StoriesCard, { StoriesTypeCard } from '@/app/components/StoriesCard'
 
 const md = markdownit()
 
-export const revalidate = 3600 // Revalidate every hour
+export const revalidate = 3600 
 
 async function getStory(id: string) {
   return await client.fetch(STORIES_BY_ID_QUERY, { id })
