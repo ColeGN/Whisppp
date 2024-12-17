@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { auth, signOut, signIn } from "@/auth";
-import { BadgePlus, LogOut , Info, Newspaper} from "lucide-react";
+import { BadgePlus, LogOut , Info, Newspaper ,Podcast} from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Navbar = async () => {
@@ -22,6 +22,10 @@ const Navbar = async () => {
           <Link href="/about" className="hover:text-gray-600 transition-colors">
             <span className="max-sm:hidden">About</span>
             <Info className="size-6 sm:hidden" />
+          </Link>
+          <Link href="/blog">
+            <span className="max-sm:hidden">Blog</span>
+            <Podcast className="size-6 sm:hidden" />
           </Link>
 
           {session && session?.user ? (

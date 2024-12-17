@@ -4,6 +4,7 @@ import StoriesCard from "../components/StoriesCard";
 import { StoriesTypeCard } from "../components/StoriesCard";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { auth } from "@/auth";
+import AnimatedHeader from "../components/Header";
 
 export default async function Home({
   searchParams,
@@ -18,16 +19,12 @@ export default async function Home({
   console.log(session?.id)
   const {data: posts} = await sanityFetch({ query: STORIES_QUERY , params});
 
-  // console.log(JSON.stringify(posts, null, 2));
+  console.log(JSON.stringify(posts, null, 2));
   return (
     
     <>
-    <section className="pink_container">
-      <h1 className="heading "> 
-      At Whispp, you have the freedom  to  express yourself <br/> —no  filters, no limits. 
-
-
-      </h1>
+    <section className="pink-container">
+     <AnimatedHeader/>
 
       <p className="sub-heading !max-w-3xl"> Express your creativity freely and engage with others!
       </p>

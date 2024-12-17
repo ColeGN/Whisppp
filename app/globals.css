@@ -47,10 +47,6 @@
         @apply font-normal text-sm text-white-100/80;
     }
 
-    .pink_container {
-        @apply w-full bg-primary min-h-[530px] pattern flex justify-center items-center flex-col py-10 px-6;
-    }
-
     .tag {
         @apply bg-secondary px-6 py-3 font-work-sans font-bold rounded-sm uppercase relative tag-tri;
     }
@@ -131,7 +127,6 @@
         @apply size-[50px] rounded-full bg-black flex justify-center items-center !important;
     }
 
-    /* startupcard */
     .startup-card {
         @apply bg-white border-[5px] border-black py-6 px-5 rounded-[22px] shadow-200 hover:border-primary transition-all duration-500 hover:shadow-300 hover:bg-primary-100;
     }
@@ -156,7 +151,6 @@
         @apply w-full h-96 rounded-[22px] bg-zinc-400;
     }
 
-    /* startupform */
     .startup-form {
         @apply max-w-2xl mx-auto bg-white my-10 space-y-8 px-6;
     }
@@ -219,3 +213,27 @@
 .w-md-editor-toolbar {
     padding: 10px !important;
 }
+@layer utilities {
+    .bg-grid-pattern {
+      background-image: 
+        linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+  }
+  
+  .heading {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .card_grid {
+    @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8;
+  }
+  @layer components {
+    .pink-container {
+      @apply w-full bg-primary min-h-[530px] flex justify-center items-center flex-col py-10 px-6;
+      @apply sm:min-h-[550] md:min-h-[600] lg:min-h-[700px];
+      @apply transition-all duration-300 ease-in-out;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+  }
