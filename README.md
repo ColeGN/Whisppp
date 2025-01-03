@@ -12,8 +12,8 @@ Welcome to **Whispp**, a personal project dedicated to providing a wide range of
 
 ## Technologies Used  
 - **Framework**: [Next.js](https://nextjs.org/)  
-- **Styling**: Tailwind CSS (or your preferred styling library)  
-- **API**: NewsAPI or your preferred source  
+- **Styling**: Tailwind CSS
+- **API**: NewsAPI 
 
 ## How to Access  
 Visit [Whispp](https://whispp.vercel.app/) and explore a world of news at your fingertips.  
@@ -27,8 +27,6 @@ Whispp is not just a news aggregator. It's a platform where ideas meet innovatio
 - Introduce interactive features like polls and comments.  
 
 ## Contributing  
-If you’d like to contribute to Whispp or have feedback, feel free to contact me at [your email or contact link].  
+If you’d like to contribute to Whispp or have feedback, feel free to contact me at gantogtokh0221@gmail.com
 
-## License  
-This project is open-source and available under the [MIT License](LICENSE).  
 
